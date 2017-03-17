@@ -1,8 +1,8 @@
 var app = angular.module('app.Constant', []);
 
 app.value('CONST', {
-    APP_NAME: 'CSS Universal Deliver Platform',
-    APP_NAME_SHORT: 'CUDP',
+    APP_NAME: 'Top For Agent Support Tool',
+    APP_NAME_SHORT: 'FAST',
     DEV_MODE:false,
     SERVICE_INFO: {
         ENDPOINT: 'http://10.168.177.60:8008/api/',
