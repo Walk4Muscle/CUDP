@@ -9,6 +9,11 @@ app
         templateUrl: 'public/templates/home.html',
         controller: 'homeCtrl'
       })
+      .state('subscription', {
+        url: '/subscription',
+        templateUrl: 'public/templates/subscription.html',
+        controller: 'subscriptionCtrl'
+      })
       // configure html5 to get links working on jsfiddle
     $locationProvider.html5Mode(true).hashPrefix('!');
   })

@@ -58,9 +58,9 @@ app.factory('menu', ($location, $rootScope, CONST) => {
         name: 'Thread List',
         type: 'heading',
         children: [{
-            name: 'Code Projects',
+            name: 'Thread List',
             type: 'link',
-            state: 'code'
+            state: '/'
         }]
     },{
         name: 'Statistics',
@@ -74,7 +74,7 @@ app.factory('menu', ($location, $rootScope, CONST) => {
         name: 'Settings',
         type: 'heading',
         children: [{
-            name: 'Subscription',
+            name: 'Subscriptions',
             type: 'link',
             state: 'subscription'
         },{

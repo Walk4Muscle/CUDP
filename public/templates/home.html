@@ -1,4 +1,9 @@
 <md-content md-colors="{background:'grey-200'}">
+    <!--breadcrumbs start-->
+    <div class="breadcrumb" md-colors="{background:'blue-500-0.56'}">
+        Thread List
+    </div>
+    <!--breadcrumbs end-->
     <!--statistics blocks start-->
     <md-card>
         <md-grid-list md-cols="4" md-row-height="48px">
@@ -28,12 +33,23 @@
 
     <!--thread table start-->
     <md-card>
-        <md-card-header layout="column" md-colors="{background:'cyan-100'}" style="padding:12px;">
-            <md-card-header-text layout-align="start start">
-                <span class="md-title">Query</span>
-            </md-card-header-text>
-        </md-card-header>
-        <md-card-content layout="row" layout-align="center center" style="padding:8px;padding-bottom: 0px">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="OverAll">
+        
+      </md-tab>
+      <md-tab label="Subscription 1">
+      </md-tab>
+      <md-tab label="Subscription 2">
+      </md-tab>
+    </md-tabs>
+    <md-card style="margin:0;">
+            <md-card-header layout="column" md-colors="{color:'blue'}" style="padding:12px 12px 0;">
+                <md-card-header-text layout-align="start start">
+                    <span class="md-title">Query</span>
+                </md-card-header-text>
+            </md-card-header>
+            <!--<md-divider></md-divider>-->
+            <md-card-content layout="row" layout-align="center center" style="padding:8px;padding-top: 0px">
             <div flex layout="row">
                 <md-input-container class="inquery" flex="20">
                     <label>Owner</label>
@@ -69,7 +85,8 @@
                     </md-button>
                 </div>
             </div>
-        </md-card-content>
+            </md-card-content>
+        </md-card>
     </md-card>
-    <!--thread table end-->
+<!--thread table end-->
 </md-content>
