@@ -6,21 +6,22 @@
     <!--breadcrumbs end-->
 
     <!--thread table start-->
-    <md-button class="md-raised" md-colors="{background:'green'}">
+    <md-button class="md-raised" md-colors="{background:'green'}" ui-sref="subscription.edit">
         <md-icon md-font-set="material-icons" aria-label="Add" style="color:#fff">add</md-icon>
         <span>New Subscription</span>
     </md-button>
     <md-card md-whiteframe="1">
         <md-list flex style="padding-top:0;">
             <md-subheader class="md-no-sticky">Current Subscriptions</md-subheader>
-            <md-list-item class="md-3-line noright" ng-click="null">
+            <md-list-item class="md-3-line noright" ng-repeat="s in subscriptions" ng-click="null">
                 <div class="md-list-item-text" layout="column">
-                    <h3>Name: Subscription 1</h3>
-                    <h4>Platform: Stackoverflow</h4>
-                    <h4>Topic: Azure</h4>
+                    <h3 layout="row" layout-align="start start"><span flex="10">Name</span><span flex>{{s.name}}</span></h3>
+                    <h4 layout="row" layout-align="start start"><span flex="10">Platfrom</span><span flex>{{s.platfroms}}</span></h4>
+                    <h4 layout="row" layout-align="start start"><span flex="10">Topic</span><span flex>{{s.topic}}</span></h4>
                     <md-icon md-colors="{color:'green'}" class="md-secondary" md-font-set="material-icons" aria-label="Edit">edit</md-icon>
                     <md-icon md-colors="{color:'red'}" class="md-secondary" md-font-set="material-icons" aria-label="Remove">delete</md-icon>
                 </div>
+                <md-divider></md-divider>
             </md-list-item>
         </md-list>
     </md-card>

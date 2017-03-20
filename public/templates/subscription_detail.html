@@ -1,0 +1,97 @@
+<md-content md-colors="{background:'grey-200'}">
+    <!--breadcrumbs start-->
+    <div class="breadcrumb" md-colors="{background:'blue-500-0.56'}">
+        Subscriptions > Detail
+    </div>
+    <!--breadcrumbas end-->
+
+    <!--thread table start-->
+
+    <md-content layout="row" layout-align="start start">
+        <!--subscription details start-->
+        <md-content md-whiteframe="4" flex-md="60" flex="70">
+            <md-subheader class="md-no-sticky" md-colors="{background:'indigo'}">Subscription Details</md-subheader>
+            <md-card>
+                <md-card-content layout="column" layout-align="start stretch">
+                    <md-input-container>
+                        <label>Subscription Name</label>
+                        <input type="text" name="name" ng-model="form.name" required>
+                    </md-input-container>
+                    <md-contact-chips
+                        ng-model="form.platform"
+                        md-contacts="availablePlatform"
+                        md-contact-name="name"
+                        md-contact-image="image"
+                        md-contact-email="email"
+                        md-require-match="true"
+                        md-highlight-flags="i"
+                        filter-selected="true"
+                        placeholder="Platform">
+                    </md-contact-chips>
+                </md-card-content>
+            </md-card>
+        </md-content>
+        <!--subscription details end-->
+
+        <!--Available Resources start-->
+        <md-content flex layout="column" layout-align="center start" style="border-left: 1px solid #ccc;">
+            <md-content md-whiteframe="4" flex style="width: 100%">
+                <md-subheader class="md-no-sticky" md-colors="{background:'green'}">Available Resources</md-subheader>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Platforms</md-subheader>
+                    <md-list-item class="md-1-line contact-item" ng-repeat="p in availablePlatform" ng-click="null">
+                        <img class="md-avatar platform {{p}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{p}}</h3>
+                        </div>
+                    </md-list-item>
+                </md-list>
+                <md-divider style="clear: both;"></md-divider>
+                <md-list class="md-dense">
+                    <md-subheader class="md-no-sticky">Topics</md-subheader>
+                    <md-list-item class="md-2-line" ng-repeat="t in availableTopic" ng-click="null">
+                        <div class="md-list-item-text" layout="column">
+                            <h3><b>{{t}}</b>
+                            </h3>
+                            <p>
+                                <md-button md-no-ink class="md-raised md-tiny label">tag1</md-button>
+                                <md-button md-no-ink class="md-raised md-tiny label">tag2</md-button>
+                                <md-button md-no-ink class="md-raised md-tiny label">tag3</md-button>
+                            </p>
+                        </div>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+            <!--Available Resources end-->
+
+
+            <!--Subscription Samples start-->
+            <md-content md-whiteframe="2" flex style="width: 100%">
+                <!--<md-card>-->
+                <md-list class="md-dense" flex style="padding:0;">
+                    <md-subheader class="md-no-sticky" md-colors="{background:'blue'}">Subscription Samples
+                        <a class="button" ng-click="toggleSample=!toggleSample" ng-init="toggleSample=true">
+                            <md-icon md-font-set="material-icons" style="color:#fff">more_vert</md-icon>
+                        </a>
+                    </md-subheader>
+                    <md-content style="max-height:228px;overflow-y: auto" ng-show="toggleSample">
+                        <md-list-item class="md-3-line noright" ng-repeat="s in subscriptions" ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h3 layout="row" layout-align="start start"><span flex="30">Name</span><span flex>{{s.name}}</span></h3>
+                                <h4 layout="row" layout-align="start start"><span flex="30">Platfrom</span><span flex>{{s.platfroms}}</span></h4>
+                                <h4 layout="row" layout-align="start start"><span flex="30">Topic</span><span flex>{{s.topic}}</span></h4>
+                            </div>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-content>
+                </md-list>
+                <!--</md-card>-->
+            </md-content>
+        </md-content>
+        <!--Subscription Samples end-->
+
+    </md-content>
+
+    <!--thread table end-->
+</md-content>

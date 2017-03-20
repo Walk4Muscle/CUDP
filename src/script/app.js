@@ -1,5 +1,5 @@
 let app = angular.module('app', [
-    require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'),require('./app.constant.js'),
+    require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'), require('./app.constant.js'),
     'ngMaterial', 'ngAnimate'
   ])
   .config(($mdThemingProvider) => {
@@ -67,18 +67,21 @@ let app = angular.module('app', [
         support_alias: null
       }
       return API.CodeOwner.save(data).$promise
-    }
+    };
     $rootScope.showUTDialog = (ev, params) => {
-        // console.log(params);
-        $mdDialog.show({
-          controller: 'UTDialogCtrl',
-          templateUrl: '/public/templates/ut-log-dialog.tmpl.html',
-          parent: angular.element(document.body),
-          targetEvent: ev,
-          clickOutsideToClose: true,
-          locals: {
-            params: params
-          },
-        })
-      }
+      // console.log(params);
+      $mdDialog.show({
+        controller: 'UTDialogCtrl',
+        templateUrl: '/public/templates/ut-log-dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        locals: {
+          params: params
+        },
+      })
+    };
+    $rootScope.$on('$stateChangeSuccess', (ent) => {
+      $mdSidenav('left').close()
+    })
   })
