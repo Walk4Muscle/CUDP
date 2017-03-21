@@ -1,10 +1,10 @@
 let app = angular.module('app', [
-    require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'), require('./app.constant.js'),
-    'ngMaterial', 'ngAnimate'
+    'ngMaterial', 'ngAnimate','smart-table',
+    require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'), require('./app.constant.js')
   ])
   .config(($mdThemingProvider) => {
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
+      .primaryPalette('blue');
     // .accentPalette('blue-grey',{
     //   'hue-1': '50'
     // });

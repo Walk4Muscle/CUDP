@@ -78,6 +78,10 @@ app.factory('menu', ($location, $rootScope, CONST) => {
             type: 'link',
             state: 'subscription.list'
         },{
+            name: 'Assign Scope',
+            type: 'link',
+            state: '/'
+        },{
             name: 'Profile',
             type: 'link',
             state: 'profile'

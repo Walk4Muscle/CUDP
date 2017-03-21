@@ -38,6 +38,15 @@ app.filter('removeEmtpyInArray', () => {
       return newInput;
     };
 })
+
+app.filter('secondsToDateTime', function() {
+    return function(seconds) {
+        var d = new Date(0,0,0,0,0,0,0);
+        d.setSeconds(seconds);
+        return d;
+    };
+});
+
   // app.filter('percentage', ['$window', function ($window) {
   //     return function (input, decimals, notAbsolute, suffix) {
   //         let decimals = angular.isNumber(decimals) ? decimals : 3;

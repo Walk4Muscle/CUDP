@@ -36,7 +36,7 @@
     </md-toolbar>
     <div layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
-            <md-content layout-padding="" ng-controller="LeftCtrl">
+            <md-content class="no-padding" ng-controller="LeftCtrl">
                 <ul class="docs-menu" style="margin-top: 0px;">
                     <li ng-repeat="section in menu.sections" class="parent-list-item {{section.className || ''}}" ng-class="{'parentActive' : isSectionSelected(section)}">
                         <h2 class="menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">

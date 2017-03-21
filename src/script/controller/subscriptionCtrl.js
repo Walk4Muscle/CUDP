@@ -22,7 +22,8 @@ module.exports = function ($scope) {
 
 	$scope.form = {
 		name:undefined,
-		selectPlatforms:[]
+		selectPlatforms:[],
+		selectTopics:[]
 	}
 	$scope.querySearch = (query, type) => {
 		let lowercaseQuery = angular.lowercase(query);
@@ -31,7 +32,7 @@ module.exports = function ($scope) {
 		return results;
 	}
 	$scope.addToChips = (item,type) => {
-		let array = type.toLowerCase()==='platform'?$scope.form.selectPlatforms:$scope.form.selectPlatforms;
+		let array = type.toLowerCase()==='platform'?$scope.form.selectPlatforms:$scope.form.selectTopics;
 		if(array.indexOf(item)===-1)array.push(item);
 	}
 	let queryInArray = (array,query)=>{

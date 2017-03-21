@@ -191,6 +191,7 @@ button.badge1 {
   min-width: 60px;
   /*line-height: 30px;*/
 }
+.md-button.md-flat.md-tiny,
 .md-button.md-raised.md-tiny {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -304,4 +305,45 @@ img.md-avatar.platform.PowerApp {
 a.button {
   cursor: pointer;
   float: right;
+}
+.no-margin {
+  margin: 0px !important;
+}
+.no-padding {
+  padding: 0px !important;
+}
+.no-left-margin {
+  margin-left: 0px !important;
+}
+.no-right-margin {
+  margin-right: 0px !important;
+}
+.no-left-padding {
+  padding-left: 0px !important;
+}
+.no-right-padding {
+  padding-right: 0px !important;
+}
+.groupX {
+  font-size: 16px;
+  margin: 20px 0;
+  padding: 3px 15px 3px 15px;
+  border: 1px solid #ccc;
+  text-transform: none;
+  font-weight: 400;
+  min-width: 100px;
+}
+.groupX.md-button.left {
+  border-radius: 10px 0 0 10px;
+}
+.groupX.md-button.middle {
+  border-radius: 0;
+  border-left: 1px solid rgba(230, 230, 230, 0.96);
+  border-right: 1px solid rgba(230, 230, 230, 0.96);
+}
+.groupX.md-button.right {
+  border-radius: 0 10px 10px 0;
+}
+.groupX.md-button.groupX.md-button:hover {
+  -webkit-filter: grayscale(25%);
 }

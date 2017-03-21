@@ -19,8 +19,8 @@ app.value('CONST', {
         "2": 'Null',
         "3": 'N/A',
     },
-    ISSUE_STATUS:['Waiting On Customer','Solution Deliver','Escalated','Pending on Research','Self-Answered','OffTopic','Deleted','New Issue'],
-    ISSUE_STATUS_COLOR:['grey-900','green','grey-600','yellow-A400','green','grey','grey','blue'],
+    ISSUE_STATUS:['Waiting On Customer','Answered','Solution Deliver','Escalated','Pending on Research','Self-Answered','OffTopic','Deleted In SO','New Issue'],
+    ISSUE_STATUS_COLOR:['grey-900','green','green','grey-600','deep-orange','green','grey-600','grey-600','blue'],
 })
 
 module.exports = 'app.Constant';
