@@ -1,0 +1,70 @@
+<md-content md-colors="{background:'grey-200'}">
+    <!--breadcrumbs start-->
+    <div class="breadcrumb" md-colors="{background:'blue-500-0.56'}">
+        Scope
+    </div>
+    <!--breadcrumbs end-->
+
+    <md-content layout="row" layout-align="start center" style="padding:8px">
+        <md-card flex>
+            <md-subheader class="md-no-sticky" md-colors="{background:'indigo'}">Assign Scope</md-subheader>
+            <md-card-content layout="column" layout-align="start stretch">
+                <md-input-container>
+                    <label>Member Alias</label>
+                    <input type="text" name="name" ng-model="form.name" required>
+                </md-input-container>
+                <fieldset class="form-fieldset">
+                    <legend class="demo-legend">Platform Scope</legend>
+                    <div layout="row" layout-wrap flex>
+                        <div flex="100">
+                            <md-checkbox aria-label="Select All" ng-checked="isChecked(selectedPlatforms,availablePlatform)" md-indeterminate="isIndeterminate(selectedPlatforms,availablePlatform)"
+                                ng-click="toggleAll('selectedPlatforms','availablePlatform')">
+                                <span ng-if="isChecked(selectedPlatforms,availablePlatform)">Un-</span>Select All
+                            </md-checkbox>
+                            <md-input-container style="margin-left: 8px">
+                                <label>Filter</label>
+                                <input ng-model="filterPlatform">
+                            </md-input-container>
+                        </div>
+                        <div layout="row" layout-padding flex>
+                            <div class="select-all-checkboxes" ng-repeat="item in availablePlatform | filter:filterPlatform track by $index ">
+                                <md-checkbox ng-checked="exists(item, selectedPlatforms)" ng-click="toggle(item, selectedPlatforms)">
+                                    {{ item }}
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div style="margin:8px"></div>
+                <fieldset class="form-fieldset">
+                    <legend class="demo-legend">Topic Scope</legend>
+                    <div layout="row" layout-wrap flex>
+                        <div flex="100">
+                            <md-checkbox aria-label="Select All" ng-checked="isChecked(selectedTopics,availableTopic)" md-indeterminate="isIndeterminate(selectedTopics,availableTopic)"
+                                ng-click="toggleAll('selectedTopics','availableTopic')">
+                                <span ng-if="isChecked(selectedTopics,availableTopic)">Un-</span>Select All
+                            </md-checkbox>
+                            <md-input-container style="margin-left: 8px">
+                                <label>Filter</label>
+                                <input ng-model="filterTopic">
+                            </md-input-container>
+                        </div>
+                        <div layout="row" layout-padding flex>
+                            <div class="select-all-checkboxes" ng-repeat="item in availableTopic | filter:filterTopic track by $index ">
+                                <md-checkbox ng-checked="exists(item, selectedTopics)" ng-click="toggle(item, selectedTopics)">
+                                    {{ item }}
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </md-card-content>
+
+            <section layout="row" layout-align="end center" style="margin-right:20px">
+                <md-button class="groupX left" md-colors="{background:'orange-800'}">Clear</md-button>
+                <md-button class="groupX middle" md-colors="{background:'red'}">Cancel</md-button>
+                <md-button class="groupX right" md-colors="{background:'green'}">Submit</md-button>
+            </section>
+        </md-card>
+    </md-content>
+</md-content>

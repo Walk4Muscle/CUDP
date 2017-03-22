@@ -80,7 +80,7 @@ app.factory('menu', ($location, $rootScope, CONST) => {
         },{
             name: 'Assign Scope',
             type: 'link',
-            state: '/'
+            state: 'scope'
         },{
             name: 'Profile',
             type: 'link',

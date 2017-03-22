@@ -1,4 +1,4 @@
-module.exports = function ($scope) {
+module.exports = function ($scope,$state) {
 	$scope.subscriptions = [{
 		name: 'Subscription 1',
 		platfroms: 'SO,SU,SF',
@@ -21,27 +21,31 @@ module.exports = function ($scope) {
 	$scope.availableTopic = ['Azure All', 'UWP All', 'Dev Tool', 'SQL Server']
 
 	$scope.form = {
-		name:undefined,
-		selectPlatforms:[],
-		selectTopics:[]
+		name: undefined,
+		selectPlatforms: [],
+		selectTopics: []
 	}
 	$scope.querySearch = (query, type) => {
 		let lowercaseQuery = angular.lowercase(query);
-		let array = type.toLowerCase()==='platform'?$scope.availablePlatform:$scope.availableTopic;
-		let results = lowercaseQuery ? queryInArray(array,lowercaseQuery) : [];
+		let array = type.toLowerCase() === 'platform' ? $scope.availablePlatform : $scope.availableTopic;
+		let results = lowercaseQuery ? queryInArray(array, lowercaseQuery) : [];
 		return results;
 	}
-	$scope.addToChips = (item,type) => {
-		let array = type.toLowerCase()==='platform'?$scope.form.selectPlatforms:$scope.form.selectTopics;
-		if(array.indexOf(item)===-1)array.push(item);
+	$scope.addToChips = (item, type) => {
+		let array = type.toLowerCase() === 'platform' ? $scope.form.selectPlatforms : $scope.form.selectTopics;
+		if (array.indexOf(item) === -1) array.push(item);
 	}
-	let queryInArray = (array,query)=>{
+	let queryInArray = (array, query) => {
 		let tmp = []
-		angular.forEach(array, (item)=>{
-			if(item.toLowerCase().indexOf(query) !== -1){
+		angular.forEach(array, (item) => {
+			if (item.toLowerCase().indexOf(query) !== -1) {
 				tmp.push(item);
 			}
 		})
 		return tmp;
+	}
+
+	$scope.cancel = () => {
+		$state.go('subscription.list');
 	}
 }

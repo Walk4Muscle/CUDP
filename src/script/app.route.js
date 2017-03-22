@@ -24,6 +24,21 @@ app
         templateUrl: 'public/templates/subscription_detail.html',
         controller: 'subscriptionCtrl'
       })
+      .state('report', {
+        url: '/report',
+        templateUrl: 'public/templates/report.html',
+        controller: 'reportCtrl'
+      })
+      .state('scope', {
+        url: '/scope',
+        templateUrl: 'public/templates/assign-scope.html',
+        controller: 'scopeCtrl'
+      })
+      .state('profile', {
+        url: '/profile/:platform',
+        templateUrl: 'public/templates/profiles.html',
+        controller: 'profilesCtrl'
+      })
     // configure html5 to get links working on jsfiddle
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
